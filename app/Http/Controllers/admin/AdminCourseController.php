@@ -22,7 +22,7 @@ class AdminCourseController extends Controller {
 
 	public function store(Request $request) {
 
-		$request['weekDays'] = implode($request->weekDays, ' ');
+		$request['weekDays'] = is_array($request->weekDays) ? implode('', $request->weekDays) : $request->weekDays;
 		$request['status'] = 'future';
 		$course = Course::create($request->all());
 		return redirect()->route('admin.course.show', ['id' => $course->id]);
