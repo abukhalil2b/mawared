@@ -33,22 +33,25 @@
 	        <a href="{{route('login')}}" class="btn btn1">سجل الدخول</a>
 			<a href="{{route('register')}}" class="btn btn1">سجل حساب جديد</a>
         @else
-	        @if(!$isSubscribed)
-	            <a class="btn btn1"
-	               onclick="event.preventDefault();
-	                             document.getElementById('subscribe-form').submit();">
-	                التسجيل في الدورة
-	            </a>
+        	@if(auth::user()->userType=='admin')
+        	@else
+		        @if(!$isSubscribed)
+		            <a class="btn btn1"
+		               onclick="event.preventDefault();
+		                             document.getElementById('subscribe-form').submit();">
+		                التسجيل في الدورة
+		            </a>
 
-	            <form id="subscribe-form" action="{{ route('course.subscribe') }}" method="POST" style="display: none;">
-	                @csrf
-	                <input type="hidden" name="course_id" value="{{$course->id}}">
-	            </form>
-	        @else
-	       		@if(auth::user()->userType=='teacher')
-	       		@else
-	       		 	<center><h4>أنت مشترك بالفعل</h4></center>
-	       		@endif
+		            <form id="subscribe-form" action="{{ route('course.subscribe') }}" method="POST" style="display: none;">
+		                @csrf
+		                <input type="hidden" name="course_id" value="{{$course->id}}">
+		            </form>
+		        @else
+		       		@if(auth::user()->userType=='teacher')
+		       		@else
+		       		 	<center><h4>أنت مشترك بالفعل</h4></center>
+		       		@endif
+		        @endif
 	        @endif
         @endguest
 	</div>
