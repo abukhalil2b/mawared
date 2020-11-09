@@ -1,0 +1,49 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateCoursesTable extends Migration {
+	/**
+	 * Run the migrations.
+	 *
+	 * @return void
+	 */
+	public function up() {
+		Schema::create('courses', function (Blueprint $table) {
+			$table->id();
+			$table->string('title')->nullable();
+			$table->string('imgurl')->nullable();
+			$table->string('shortDescription')->nullable();
+			$table->text('longDescription')->nullable();
+			$table->date('startAt')->nullable();
+			$table->date('endAt')->nullable();
+			$table->time('startTime')->nullable();
+			$table->smallInteger('duration')->nullable();
+			$table->date('registerStartAt')->nullable();
+			$table->date('registerEndAt')->nullable();
+			$table->string('weekDays')->nullable();
+			$table->string('requireNumber')->nullable();
+			$table->string('status')->nullable();
+			$table->boolean('isPaid')->default(1);
+			$table->double('price')->nullable();
+			$table->string('language')->nullable();
+			$table->string('level')->nullable();
+			$table->string('deliveryMeans')->nullable();
+			$table->boolean('active')->default(0);
+			$table->integer('teacher_id')->unsigned();
+			$table->integer('cate_id')->nullable()->unsigned();
+			$table->timestamps();
+		});
+	}
+
+	/**
+	 * Reverse the migrations.
+	 *
+	 * @return void
+	 */
+	public function down() {
+		Schema::dropIfExists('courses');
+	}
+}

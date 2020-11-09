@@ -24,31 +24,24 @@
 <body>
 
     <div class="overlay">
+
         <div class="container">
             <div class="row pt-3">
-                <div class="col-lg-4 logo-table-container">
-                    <table class="logo-table">
-                        <tr>
-                            <td><img class="logo-img" src="{{ asset('img/logo1.png') }}" alt=""></td>
-                            <td>
-                                <span class="logo-title-lg" >الجمعية العمانية للعناية بالقرآن الكريم</span>
-                                <span class="logo-title-sm" >ولاية العامرات</span>
-                            </td>
-                        </tr>
-                    </table>
+                <div class="col-lg-4 logo-container">
+                    <img class="logo-img" src="{{ asset('img/logo1.png') }}" alt="">
+                    <span class="logo-title-lg" >الجمعية العمانية للعناية بالقرآن الكريم</span>
+                    <span class="logo-title-sm" >مركز ولاية العامرات</span>
                 </div>
 
                 <div class="col-lg-5 interface-nav-list-container">
                     <ul class="interface-nav-list">
                         <li>
-                          <a href="/">الرئيسية</a>
-                        </li>
-                        <li>
                           <a href="/">عن الجمعية</a>
                         </li>
                         <li>
-                          <a href="/">المدونة</a>
+                          <a href="/">المدونة </a>
                         </li>
+
                         <li>
                           <a href=""> اتصل بنا </a>
                         </li>
@@ -58,10 +51,16 @@
                 <div class="col-lg-3 interface-nav-btn-container">
                     @if(Auth::guard()->check())
                         <a class="interface-nav-btn interface-nav-btn-logout "
-                        href="{{route('logout')}}">تسجيل الخروج</a>
-                        <a class="interface-nav-btn " href=""> تنزيل الملفات </a>
+                            onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();"
+                            href="{{route('logout')}}">{{ __('auth.Logout') }}</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        <a class="interface-nav-btn " href="/home"> الرئيسية </a>
                     @else
-                        <a class="interface-nav-btn " href="">تسجيل الدخول</a>
+                        <a class="interface-nav-btn" href="{{route('login')}}">تسجيل الدخول</a>
+                        <a class="interface-nav-btn" href="{{route('register')}}">تسجيل جديد</a>
                     @endif
 
                 </div>
@@ -82,6 +81,7 @@
             </div> <!-- alert row -->
             @endif
         </div>
+
     </div>
 
 
@@ -93,45 +93,46 @@
         </form>
     </div>
 
-    <center><p  class="statist-txt">دورات قادمة</p></center>
+    <center><p  class="statist-txt">{{__('pages.comingcourse')}}</p></center>
 
     <div class="mid-bar">
         <div class="container">
             <div class="row">
+            @foreach($courses as $course)
                 <div class="col-lg-4 col-md-6">
                     <div class="card">
                       <img class="card-img-top" src="{{ asset('img/logo1.png') }}" alt="Card image cap">
                       <div class="card-body">
                         <p class="card-text">
-                            <h4>مقدمة في الفن الإسلامي</h4>
+                            <h4>{{$course->title}}</h4>
                             <span class="badge badge-success">مجانية</span>
                             <div>تاريخ البدء 30-11-2020</div>
-                            <a href="{{route('course.details')}}" class="btn btn1">تفاصيل</a>
+                            <a href="{{route('course.show',['id'=>$course->id])}}" class="btn btn1">تفاصيل</a>
                         </p>
                       </div>
                     </div>
                 </div>
-                
+            @endforeach
             </div>
          </div>
     </div>
 
-    <center><p  class="statist-txt">دورات قائمة</p></center>
+    <center><p  class="statist-txt">{{__('pages.nowcourse')}}</p></center>
 
     <div class="mid-bar">
         <div class="container">
             <div class="row">
-                
+
             </div>
         </div>
     </div>
 
-    <center><p  class="statist-txt">دورات منصرمة</p></center>
+    <center><p  class="statist-txt">{{__('pages.pastcourse')}}</p></center>
 
     <div class="mid-bar">
         <div class="container">
             <div class="row">
-                    
+
             </div>
         </div>
     </div>
@@ -185,17 +186,8 @@
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-5 col-sm-12 footer-logo-container">
-                    <table class="footer-logo-table" >
-                        <tr>
-                            <td>
-                                <img class="footer-logo-img" src="{{ asset('img/logo1.png') }}" alt="">
-                            </td>
-                            <td>
-                                <span class="logo-title-lg" >الجمعية العمانية للعناية بالقرآن الكريم</span>
-                                <span class="logo-title-sm" >ولاية العامرات</span>
-                            </td>
-                        </tr>
-                    </table>
+                    <span class="logo-title-lg" >الجمعية العمانية للعناية بالقرآن الكريم</span>
+                    <span class="logo-title-sm" >مركز ولاية العامرات</span>
                 </div>
             </div>
         </div>

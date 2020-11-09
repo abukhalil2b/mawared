@@ -6,18 +6,11 @@ use App\Cate;
 use Illuminate\Http\Request;
 
 class LibraryController extends Controller {
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
+
 	public function __construct() {
 		$this->middleware('auth');
 	}
 
-	/**
-	 * Book
-	 */
 	public function bookIndex() {
 		$books = Book::paginate(50);
 		return view('library.book.index', compact('books'));
