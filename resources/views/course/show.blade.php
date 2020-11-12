@@ -11,10 +11,19 @@
 	<title>course</title>
 </head>
 <body>
+	@if(session('msg'))
+        <center class="alert alert-info">
+            <b>{{session('msg')}}</b>
+        </center>
+    @endif
 	<div class="container">
 		<div class="text-head mt-5">{{$course->title}}</div>
 		<div class="img-container">
+			@if($course->imgurl==NULL)
+			<img class="img1 mt-5" src="{{ asset('img/logo1.png') }}" alt="Card image cap">
+			@else
 			<img class="img1 mt-5" src="{{$course->imgurl}}" alt="Card image cap">
+			@endif
 		</div>
 		<h5 class="mt-5">{{$course->shortDescription}}</h5>
 		<h6 class="mt-1">{{$course->longDescription}}</h6>

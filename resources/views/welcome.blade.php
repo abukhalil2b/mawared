@@ -98,15 +98,20 @@
     <div class="mid-bar">
         <div class="container">
             <div class="row">
-            @foreach($courses as $course)
+            @foreach($comingcourses as $course)
                 <div class="col-lg-4 col-md-6">
                     <div class="card">
                       <img class="card-img-top" src="{{ asset('img/logo1.png') }}" alt="Card image cap">
                       <div class="card-body">
                         <p class="card-text">
                             <h4>{{$course->title}}</h4>
+                            السعر
+                            @if($course->isPaid==1)
+                            <span class="badge badge-warning">{{$course->price}}</span>
+                            @else
                             <span class="badge badge-success">مجانية</span>
-                            <div>تاريخ البدء 30-11-2020</div>
+                            @endif
+                            <div>تاريخ البدء {{$course->startAt}}</div>
                             <a href="{{route('course.show',['id'=>$course->id])}}" class="btn btn1">تفاصيل</a>
                         </p>
                       </div>
@@ -122,7 +127,30 @@
     <div class="mid-bar">
         <div class="container">
             <div class="row">
-
+            @foreach($nowcourses as $course)
+                <div class="col-lg-4 col-md-6">
+                    <div class="card">
+                    @if($course->imgurl==NULL)
+                    <img class="card-img-top" src="{{ asset('img/logo1.png') }}" alt="Card image cap">
+                    @else
+                    <img class="card-img-top" src="{{$course->imgurl}}" alt="Card image cap">
+                    @endif
+                      <div class="card-body">
+                        <p class="card-text">
+                            <h4>{{$course->title}}</h4>
+                            السعر
+                            @if($course->isPaid==1)
+                            <span class="badge badge-warning">{{$course->price}}</span>
+                            @else
+                            <span class="badge badge-success">مجانية</span>
+                            @endif
+                            <div>تاريخ البدء {{$course->startAt}}</div>
+                            <a href="{{route('course.show',['id'=>$course->id])}}" class="btn btn1">تفاصيل</a>
+                        </p>
+                      </div>
+                    </div>
+                </div>
+            @endforeach
             </div>
         </div>
     </div>
@@ -132,7 +160,30 @@
     <div class="mid-bar">
         <div class="container">
             <div class="row">
-
+            @foreach($pastcourses as $course)
+                <div class="col-lg-4 col-md-6">
+                    <div class="card">
+                    @if($course->imgurl==NULL)
+                    <img class="card-img-top" src="{{ asset('img/logo1.png') }}" alt="Card image cap">
+                    @else
+                    <img class="card-img-top" src="{{$course->imgurl}}" alt="Card image cap">
+                    @endif
+                      <div class="card-body">
+                        <p class="card-text">
+                            <h4>{{$course->title}}</h4>
+                            السعر
+                            @if($course->isPaid==1)
+                            <span class="badge badge-warning">{{$course->price}}</span>
+                            @else
+                            <span class="badge badge-success">مجانية</span>
+                            @endif
+                            <div>تاريخ البدء {{$course->startAt}}</div>
+                            <a href="{{route('course.show',['id'=>$course->id])}}" class="btn btn1">تفاصيل</a>
+                        </p>
+                      </div>
+                    </div>
+                </div>
+            @endforeach
             </div>
         </div>
     </div>

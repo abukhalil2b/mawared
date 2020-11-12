@@ -31,15 +31,16 @@ class HomeController extends Controller {
 
 		//student account
 		if ($Auth->userType == 'student') {
-			//Get a student who linkend with this user.
-			$user = $Auth->whereHas('student', function ($query) use ($Auth) {
-				$query->where('students.user_id', $Auth->id);
-			})->first();
-
 			$totalMarks = 0;
 			$myComingCourses = [];
 			$myNowCourses = [];
 			$myPastCourses = [];
+
+			//Check and Get a student who linkend with this user.
+			$user = $Auth->whereHas('student', function ($query) use ($Auth) {
+				$query->where('students.user_id', $Auth->id);
+			})->first();
+
 			if ($user) {
 				$student = $user->student()->first();
 				$totalMarks = Mark::where(['student_id' => $student->id])->sum('point');
@@ -48,12 +49,12 @@ class HomeController extends Controller {
 						->where('status', 'coming');
 				})->get();
 
-				$myNowCourses = Student::whereHas('courses', function ($query) use ($student) {
+				$myNowCourses = Course::whereHas('students', function ($query) use ($student) {
 					$query->where('student_course.student_id', $student->id)
 						->where('status', 'now');;
 				})->get();
 
-				$myPastCourses = Student::whereHas('courses', function ($query) use ($student) {
+				$myPastCourses = Course::whereHas('students', function ($query) use ($student) {
 					$query->where('student_course.student_id', $student->id)
 						->where('status', 'past');;
 				})->get();

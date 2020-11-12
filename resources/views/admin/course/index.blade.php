@@ -15,8 +15,8 @@
                     <td>{{$course->title}}</td>
                     <td>{{$course->startAt}}</td>
                     <td>
-                        <a class="btn" href="">تعديل</a>
-                        <a class="btn" href="">حذف</a>
+                        <a class="btn" href="{{route('admin.course.edit',['id'=>$course->id])}}">تعديل</a>
+                        <a class="btn" href="{{route('admin.course.detail.title.create',['id'=>$course->id])}}">التوصيف</a>
                     </td>
                 </tr>
                 @endforeach

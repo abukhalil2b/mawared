@@ -17,17 +17,17 @@
                     @if($user)
                     <div class="card-body">
                        الإسم: {{$user->name}}
-                       <h4>دوراتي القادمة</h4>
+                       <h4>{{__('pages.mycomingcourse')}}</h4>
                         @foreach($myComingCourses as $myComingCourse)
                             <li>{{$myComingCourse->title}}</li>
                         @endforeach
 
-                        <h4>دوراتي الحالية</h4>
+                        <h4>{{__('pages.mynowcourse')}}</h4>
                         @foreach($myNowCourses as $myNowCourse)
                             <li>{{$myNowCourse->title}}</li>
                         @endforeach
 
-                        <h4>دوراتي السابقة</h4>
+                        <h4>{{__('pages.mypastcourse')}}</h4>
                         @foreach($myPastCourses as $myPastCourse)
                             <li>{{$myPastCourse->title}}</li>
                         @endforeach

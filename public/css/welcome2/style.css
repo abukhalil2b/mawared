@@ -1,0 +1,130 @@
+body{
+	padding: 0;margin: 0;
+}
+h4{
+	font-size: 16px;
+}
+h5{
+	font-size: 14px;
+}
+.overlay{
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100%;
+	background: url('../../img/welcome2/img/bg.png') no-repeat center/cover;
+}
+.overlay2{
+	top: 0;
+	left: 0;
+	z-index: -1;
+	position: fixed;
+	height: 100vh;
+	width: 100%;
+	box-shadow: inset 0 0 0 1000px rgba(0,207,220,.8);
+}
+.overlay2 img{
+	height: 100vh;
+	width: 100%;
+	opacity: 0.2;	
+}
+
+.overlay3{
+	top: 0;
+	left: 0;
+	z-index: 1;
+	position: fixed;
+	height: 100vh;
+	width: 100%;
+	background: url('../../img/welcome2/icons/icons.png') no-repeat center/cover;
+
+}
+
+.menu{
+	top: 0;
+	left: 15%;
+	z-index: 2;
+	position: fixed;
+}
+.menu li{
+	margin-top: 5%;
+	display: inline-block;
+	list-style: none;
+	padding: 10px;
+	color: #fff;
+}
+.menu li:first-child{
+	border-radius: 20px;
+	background-color: #fff;
+}
+.menu li:last-child{
+	width: 150px;
+	border:1px solid #ddd;
+	border-radius:4px;
+	background-color: rgb(0,207,220,.4);
+	text-align: center;
+}
+.menu a{
+	color: #fff;
+	text-decoration: none;
+}
+.menu li:first-child a{
+	color: #06afba;
+}
+
+.logo{
+	top: 0;
+	right: 10%;
+	z-index: 2;
+	position: fixed;
+	text-align: center;
+}
+.logo img{
+	width: 140px;
+}
+.logo h4,h5{
+	text-align: center;
+	color: #fff;
+	margin:1px;
+}
+
+.social{
+	bottom: 7%;
+	left: 7%;
+	z-index: 2;
+	position: fixed;
+}
+.social li{
+	display: inline-block;
+	list-style: none;
+	width: 50px;
+}
+.social img{
+	width: 50px;
+}
+
+.middle-button{
+	bottom: 19%;
+	left: 45%;
+	z-index: 2;
+	position: fixed;
+}
+.middle-button button{
+	width: 120px;
+	height: 30px;
+	border-radius: 12px;
+	border: 2px solid #000;
+	background-color: #ffe147;
+	box-shadow: 0px 2px 4px #696969;
+}
+
+/*-	animation -*/
+
+$('.fade').slick({
+  dots: true,
+  infinite: true,
+  speed: 500,
+  fade: true,
+  cssEase: 'linear'
+});

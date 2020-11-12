@@ -15,6 +15,7 @@ class CreateOpinionsTable extends Migration {
 			$table->id();
 			$table->integer('student_id')->unsigned();
 			$table->integer('course_id')->unsigned();
+			$table->integer('point')->unsigned();
 			$table->string('note')->nullable();
 			$table->timestamps();
 		});

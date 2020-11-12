@@ -40,4 +40,8 @@ class Course extends Model {
 	public function marks() {
 		return $this->hasMany(Mark::class);
 	}
+
+	public function details() {
+		return $this->hasMany(Detail::class);
+	}
 }

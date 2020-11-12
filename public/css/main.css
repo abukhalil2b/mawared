@@ -30,6 +30,10 @@ a:hover{
   text-decoration: none;
   cursor: pointer;
 }
+.form-control{
+  padding: 1px;
+  height: 30px;
+}
 .btn1{
   color: #26594d;
   text-align: center;
@@ -51,11 +55,15 @@ a:hover{
 }
 
 .img1{
-  width: 50%;
+  width: 70%;
 }
 .img-container{
   display: block;
   text-align: center;
+}
+.divider{
+  border-bottom: 1px solid #eee;
+  padding: 5px;
 }
 
 

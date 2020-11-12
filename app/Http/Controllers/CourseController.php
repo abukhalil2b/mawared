@@ -7,10 +7,12 @@ use Auth;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller {
+
 	public function index() {
 		$courses = Course::all();
 		return view('course.index', compact('courses'));
 	}
+
 	public function show($id) {
 		$course = Course::find($id);
 		if (auth::check()) {
@@ -28,17 +30,19 @@ class CourseController extends Controller {
 				return view('course.show', compact('course', 'isSubscribed'));
 			}
 		}
+
 		return view('course.show', compact('course'));
 
 	}
+
 	public function courseSubscribe(Request $request) {
 		//check course is not active
-		$course = Course::where(['id' => $request->course_id, 'active' => 1])->first();
+		$course = Course::where(['id' => $request->course_id, 'active' => 1, 'status' => 'coming'])->first();
 		if ($course) {
 			$course->students()->syncWithoutDetaching(Auth::user()->student);
 			return redirect()->route('home');
 		}
-		return Auth::user()->student;
+		return redirect()->back()->with(['msg' => 'لايمكن الإشتراك']);
 
 	}
 

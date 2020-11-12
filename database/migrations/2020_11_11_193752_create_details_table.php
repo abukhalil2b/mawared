@@ -4,20 +4,20 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDescriptionsTable extends Migration {
+class CreateDetailsTable extends Migration {
 	/**
 	 * Run the migrations.
 	 *
 	 * @return void
 	 */
 	public function up() {
-		Schema::create('descriptions', function (Blueprint $table) {
+		Schema::create('details', function (Blueprint $table) {
 			$table->id();
-			$table->integer('course_id')->unsigned();
-			$table->boolean('isHeading')->default(0);
+			$table->boolean('ishead')->default(0);
 			$table->string('icon')->nullable();
-			$table->string('title')->nullable();
-			$table->integer('parent')->unsigned()->nullable();
+			$table->string('title');
+			$table->integer('course_id')->unsigned();
+			$table->integer('detail_id')->unsigned()->nullable();
 			$table->timestamps();
 		});
 	}
@@ -28,6 +28,6 @@ class CreateDescriptionsTable extends Migration {
 	 * @return void
 	 */
 	public function down() {
-		Schema::dropIfExists('descriptions');
+		Schema::dropIfExists('details');
 	}
 }
