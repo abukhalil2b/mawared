@@ -27,7 +27,7 @@ h5{
 .overlay2 img{
 	height: 100vh;
 	width: 100%;
-	opacity: 0.2;	
+		
 }
 
 .overlay3{
@@ -37,8 +37,11 @@ h5{
 	position: fixed;
 	height: 100vh;
 	width: 100%;
-	background: url('../../img/welcome2/icons/icons.png') no-repeat center/cover;
 
+}
+.overlay3 img{
+	height: 100vh;
+	width: 100%;
 }
 
 .menu{
@@ -90,7 +93,7 @@ h5{
 }
 
 .social{
-	bottom: 7%;
+	bottom: 20px;
 	left: 7%;
 	z-index: 2;
 	position: fixed;
@@ -119,12 +122,99 @@ h5{
 	box-shadow: 0px 2px 4px #696969;
 }
 
-/*-	animation -*/
+@media (max-height: 700px){
 
-$('.fade').slick({
-  dots: true,
-  infinite: true,
-  speed: 500,
-  fade: true,
-  cssEase: 'linear'
-});
+	.middle-button{
+		bottom: 10%;
+		left: 45%;
+		z-index: 2;
+		position: fixed;
+	}
+
+	.social{
+		bottom: 0%;
+		left: 7%;
+		z-index: 2;
+		position: fixed;
+	}
+}
+
+.slide-img1{
+	position: absolute;
+	animation: img-a 10s ease-in-out infinite;
+}
+
+.slide-img2{
+	position: absolute;
+	animation: img-b 10s ease-in-out  infinite;
+}
+
+.slide-img3{
+	position: absolute;
+	animation: img-c 10s ease-in-out  infinite;
+}
+
+@keyframes img-a {
+	0%{
+		visibility:visible;
+		width: 130%;
+		opacity: 0.5;
+	}
+	25%{
+		visibility:hidden;
+		opacity: 0.1;
+	}
+	50%{
+		visibility:hidden;
+	}
+	75%{
+		visibility:hidden;
+	}
+	100%{
+		visibility:hidden;
+	}
+}
+
+@keyframes img-b {
+	0%{
+		visibility:hidden;
+	}
+	25%{
+		visibility:hidden;
+		opacity: 0.1;
+	}
+	50%{
+		visibility:visible;
+		width: 105%;
+		opacity: 0.5;
+	}
+	75%{
+		visibility:hidden;
+		opacity: 0.1;
+	}
+	100%{
+		visibility:hidden;
+	}
+}
+
+@keyframes img-c {
+	0%{
+		visibility:hidden;
+		opacity: 0.1;
+	}
+	25%{
+		visibility:hidden;
+	}
+	50%{
+		visibility:hidden;
+	}
+	75%{
+		visibility:hidden;
+		opacity: 0.1;
+	}
+	100%{
+		visibility:visible;
+		width: 120%;
+		opacity: 0.5;
+	}
+}

@@ -41,21 +41,13 @@
 		<button></button>
 	</div>
 
-	<div class="overlay3"></div>
+	<div class="overlay3">
+		<img src="{{asset('img/welcome2/icons/icons.png')}}" alt="">
+	</div>
 	<div class="overlay2">
-		<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-		  <div class="carousel-inner">
-		    <div class="carousel-item active">
-		      <img class="d-block w-100" src="{{asset('img/welcome2/img/b1.jpg')}}" alt="First slide">
-		    </div>
-		    <div class="carousel-item">
-		      <img class="d-block w-100" src="{{asset('img/welcome2/img/b2.jpg')}}" alt="Second slide">
-		    </div>
-		    <div class="carousel-item">
-		      <img class="d-block w-100" src="{{asset('img/welcome2/img/b3.jpg')}}" alt="Third slide">
-		    </div>
-		  </div>
-		</div>
+	      <img class="slide-img1" src="{{asset('img/welcome2/img/b1.jpg')}}" alt="First slide">
+	      <img class="slide-img2" src="{{asset('img/welcome2/img/b2.jpg')}}" alt="Second slide">
+	      <img class="slide-img3" src="{{asset('img/welcome2/img/b3.jpg')}}" alt="Third slide">
 	</div>
 	<div class="overlay"></div>
 
