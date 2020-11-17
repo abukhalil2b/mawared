@@ -127,23 +127,9 @@
 
 	}
 
-	/*------ card --------*/
-	.card{
-    	margin: 10px auto;
-    	width: 100%;
-    	
-	}
-
-	.card-body{
-		border-top: 1px solid #e5e5e5;
-	}
 
 	/*------ statistics --------*/
-	.divider{
-		border-top: 1px solid #e5e5e5;
-		padding: 5px 0;
-		margin: 10px 0;
-	}
+
 	.mid-bar{
 		padding: 2% 1%;
 	}

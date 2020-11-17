@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <center><i class="material-icons login">login</i></center>
             <div class="card">
                 <div class="card-header">{{ __('auth.Register') }}</div>
 
@@ -61,9 +62,9 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                        <div class="form-group row mb-0 ">
+                            <div class="col-md-12 center">
+                                <button type="submit" class="btn btn-block btn-secondary">
                                     {{ __('auth.Register') }}
                                 </button>
                             </div>

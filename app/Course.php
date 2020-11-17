@@ -42,6 +42,11 @@ class Course extends Model {
 	}
 
 	public function details() {
-		return $this->hasMany(Detail::class);
+		return $this->hasMany(Coursedetail::class);
 	}
+
+	public function subscribers() {
+		return $this->belongsToMany(Student::class, 'student_course', 'course_id', 'student_id')->withPivot('ispaid');
+	}
+
 }

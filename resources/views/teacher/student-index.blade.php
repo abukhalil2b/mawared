@@ -20,18 +20,18 @@
                     <table class="table">
                         <tr>
                             <td>الإسم</td>
-                            <td>النقاط</td>
+                            <td>الحالة المالية</td>
                         </tr>
-                        @foreach($students as $student)
+                        @foreach($course->subscribers as $subscriber)
                         <tr>
                             <td>
-                                <a href="{{route('course.teacher.student.show',['studentId'=>$student->id,'courseId'=>$courseId,'teacherId'=>$teacherId])}}" class="list-group-item">
-                                {{$student->user->name}}
+                                <a href="{{route('course.teacher.student.show',['studentId'=>$subscriber->id,'courseId'=>$courseId,'teacherId'=>$teacherId])}}" class="list-group-item">
+                                    {{$subscriber->user->name}}
                                 </a>
                             </td>
                             <td>
                                 <div class="list-group-item">
-                                    <span class="badge badge-secondary">{{$student->marks->sum('point')}}</span>
+                                    <span class="badge badge-secondary">{{$subscriber->pivot->ispaid==1?'تم الدفع':'لم يدفع'}}</span>
                                 </div>
                             </td>
                         </tr>

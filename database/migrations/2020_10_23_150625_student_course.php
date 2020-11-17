@@ -15,6 +15,7 @@ class StudentCourse extends Migration {
 			$table->id();
 			$table->integer('student_id')->unsigned();
 			$table->integer('course_id')->unsigned();
+			$table->boolean('ispaid')->default(0);
 			$table->timestamps();
 		});
 	}

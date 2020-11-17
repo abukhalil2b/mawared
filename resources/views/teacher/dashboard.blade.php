@@ -20,7 +20,7 @@
                     <div class="list-group">
                         <a href="{{route('course.teacher.student.index',['courseId'=>$myComingCourse->id,'teacherId'=>$teacher->id])}}" class="list-group-item">
                             <h4 class="list-group-item-heading">{{$myComingCourse->title}}</h4>
-                            <p class="list-group-item-text">عدد المشتركين
+                            <p class="list-group-item-text">عدد الطلاب المشتركين
                                 <span class="badge badge-secondary">
                                     {{$myComingCourse->students->count()}}
                                 </span>
@@ -58,6 +58,15 @@
                       </a>
                     </div>
                     @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-md-12">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <a href="{{route('user.shiftaccount.tostudent')}}" class="btn-block btn color1">التبديل إلى حساب الطالب</a>
                 </div>
             </div>
         </div>

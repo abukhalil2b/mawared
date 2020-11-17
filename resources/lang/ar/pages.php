@@ -12,5 +12,15 @@ return [
 	'mycomingcourse' => 'دوراتي القادمة',
 	'mynowcourse' => 'دوراتي الحالية',
 	'mypastcourse' => 'دوراتي السابقة',
+	'you will learn from this course' => 'توصيف الدورة',
+
+	/* week days*/
+	'Sun' => 'الأحد',
+	'Mon' => 'الإثنين',
+	'Tue' => 'الثلاثاء',
+	'Wed' => 'الأربعاء',
+	'Thu' => 'الخميس',
+	'Fri' => 'الجمعة',
+	'Sat' => 'السبت',
 
 ];

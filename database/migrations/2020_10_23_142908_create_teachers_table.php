@@ -13,9 +13,10 @@ class CreateTeachersTable extends Migration {
 	public function up() {
 		Schema::create('teachers', function (Blueprint $table) {
 			$table->id();
-			$table->string('phone')->nullable();
-			$table->string('nationalId')->nullable();
 			$table->integer('user_id')->unsigned();
+			$table->string('title')->nullable();
+			$table->string('avatar')->nullable();
+			$table->boolean('active')->default(1);
 			$table->timestamps();
 		});
 	}

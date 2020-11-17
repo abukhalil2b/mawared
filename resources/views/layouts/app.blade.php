@@ -14,10 +14,25 @@
 
     <!-- Fonts -->
 
+    <!-- Icons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/card.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/colors.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/btns.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/teacher-show.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/student-dashboard.css') }}" rel="stylesheet">
+<style>
+    select {
+  font-family: 'FontAwesome';
+}
+</style>
 </head>
 <body style="text-align: right">
     <div id="app">
@@ -51,7 +66,13 @@
                         @else
 
                             <li class="nav-item dropdown">
-                                {{ Auth::user()->name }}
+                                <span class="material-icons">person</span>
+                                <span class="">{{ Auth::user()->name }}</span>
+                                <p class="">
+                                    @if(Auth::user()->userType=='teacher') محاضر @endif
+                                    @if(Auth::user()->userType=='student') طالب @endif
+                                    @if(Auth::user()->userType=='admin') إداري @endif
+                                </p>
                             </li>
                             <a class="mr-5 ml-5 btn btn-danger" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
@@ -63,7 +84,7 @@
                                 @csrf
                             </form>
                             <a class="btn btn-secondary" href="/home">الرئيسية</a>
-                            <a class="btn btn-secondary mr-5" href="/">الدورات</a>
+                            <a class="btn btn-secondary mr-5" href="/courses">الدورات</a>
                         @endguest
                     </ul>
                 </div>

@@ -9,15 +9,25 @@ Route::get('/', function () {
 	// return view('welcome', compact('comingcourses', 'nowcourses', 'pastcourses'));
 	return view('welcome2');
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/courses', function () {
+	$comingcourses = App\Course::where('status', 'coming')->get();
+	$nowcourses = App\Course::where('status', 'now')->get();
+	$pastcourses = App\Course::where('status', 'past')->get();
+	return view('courses', compact('comingcourses', 'nowcourses', 'pastcourses'));
+});
 
 /** ADMIN */
 Route::prefix('admin/user')->group(function () {
 	Route::get('admin/dashboard', "UserController@dashboard")->name('admin.user.admin.dashboard');
 	Route::get('student/index', "StudentController@index")->name('admin.user.student.index');
-	Route::get('teacher/index', "TeacherController@index")->name('admin.user.teacher.index');
-	Route::get('teacher/create', "TeacherController@create")->name('admin.user.teacher.create');
-	Route::get('teacher/{id}/show', "TeacherController@show")->name('admin.user.teacher.show');
-	Route::post('teacher/store', "TeacherController@store")->name('admin.user.teacher.store');
+	Route::get('teacher/index', "admin\AdminTeacherController@index")->name('admin.user.teacher.index');
+	Route::get('teacher/create', "admin\AdminTeacherController@create")->name('admin.user.teacher.create');
+	Route::get('teacher/{id}/show', "admin\AdminTeacherController@show")->name('admin.user.teacher.show');
+	Route::post('teacher/store', "admin\AdminTeacherController@store")->name('admin.user.teacher.store');
 });
 
 Route::prefix('admin/course')->group(function () {
@@ -27,31 +37,33 @@ Route::prefix('admin/course')->group(function () {
 	Route::post('update', "admin\AdminCourseController@update")->name('admin.course.update');
 	Route::get('{id}/show', "admin\AdminCourseController@show")->name('admin.course.show');
 	Route::get('{id}/edit', "admin\AdminCourseController@edit")->name('admin.course.edit');
-	Route::get('{id}/detail/title/create', "admin\AdminCourseController@detailTitleCreate")
-		->name('admin.course.detail.title.create');
-	Route::post('detail/title/store', "admin\AdminCourseController@detailTitleStore")
-		->name('admin.course.detail.title.store');
-	Route::get('{id}/detail/subtitle/create', "admin\AdminCourseController@detailSubtitleCreate")
-		->name('admin.course.detail.subtitle.create');
-	Route::post('detail/subtitle/store', "admin\AdminCourseController@detailSubtitleStore")
-		->name('admin.course.detail.subtitle.store');
+	Route::get('{id}/status/edit', "admin\AdminCourseController@statusEdit")->name('admin.course.status.edit');
+	Route::post('status/update', "admin\AdminCourseController@statusUpdate")->name('admin.course.status.update');
+	Route::get('{id}/detail/create', "admin\AdminCourseController@detailTitleCreate")->name('admin.course.detail.create');
+	Route::post('detail/store', "admin\AdminCourseController@detailTitleStore")->name('admin.course.detail.store');
+
 });
 
 Route::prefix('course')->middleware('hasStudentAccount')->group(function () {
 	Route::get('{id}/show', "CourseController@show")->name('course.show');
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::prefix('teacher')->middleware('hasStudentAccount')->group(function () {
+	Route::get('{id}/show', "TeacherController@show")->name('teacher.show');
+});
 
 Route::post('register/student', "StudentController@registerStudent")->name('register.student');
 Route::post('course/subscribe', "CourseController@courseSubscribe")->name('course.subscribe');
 
-Route::get('course/{courseId}/teacher/{teacherId}/student/index', "TeacherController@studentIndex")
+Route::get('course/{courseId}/teacher/{teacherId}/student/index', "admin\AdminTeacherController@studentIndex")
 	->name('course.teacher.student.index');
-Route::get('course/{courseId}/teacher/{teacherId}/student/{studentId}/show', "TeacherController@studentShow")
+Route::get('course/{courseId}/teacher/{teacherId}/student/{studentId}/show', "admin\AdminTeacherController@studentShow")
 	->name('course.teacher.student.show');
 
 Route::post('student/mark/store', "MarkController@store")
 	->name('student.mark.store');
+
+Route::get('user/shiftaccount/tostudent', "UserController@shiftaccountToStudent")
+	->name('user.shiftaccount.tostudent');
+Route::get('user/shiftaccount/toteacher', "UserController@shiftaccountToTeacher")
+	->name('user.shiftaccount.toteacher');

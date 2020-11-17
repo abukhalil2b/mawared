@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <table>
                 <tr>
-                    <td>course</td>
+                    <td>عنوان الدورة</td>
                 </tr>
                 <tr>
                     <td>{{$course->title}}</td>

@@ -6,12 +6,14 @@
         <div class="col-md-12">
             <table class="table">
                 <tr>
-                    <td>#</td>
-                    <td>name</td>
+                    <td>الإسم</td>
+                    <td>ادارة</td>
                 </tr>
                 <tr>
-                    <td>[{{$teacher->user->id}}]</td>
                     <td>{{$teacher->user->name}}</td>
+                    <td>
+                        <a class="btn btn-sm btn-info" href="">تعديل</a>
+                    </td>
                 </tr>
             </table>
         </div>

@@ -11,7 +11,7 @@
                     @endif
             <div class="card">
                 <div class="card-header">
-                    <h4>اضافة معلم  جديد  </h4>
+                    <h4>اضافة محاضر  جديد  </h4>
                 </div>
                 <div class="card-body">
 
@@ -20,7 +20,10 @@
                     <table class="table">
 						<tr>
                     		<td>الإسم</td>
-                    		<td><input name="name" class="form-control"></td>
+                    		<td>
+                          <input name="name" class="form-control" placeholder="الإسم">
+                          <input name="title" class="form-control mt-1" placeholder="تعريف قصير">
+                            </td>
                     	</tr>
                     	<tr>
                     		<td>الإيميل</td>

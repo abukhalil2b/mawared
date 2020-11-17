@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <center><i class="material-icons personal_video">personal_video</i></center>
             <div class="card">
                 <div class="card-header">{{ __('auth.Login') }}</div>
 
@@ -49,8 +50,8 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn-block btn btn-secondary">
                                     {{ __('auth.Login') }}
                                 </button>
 

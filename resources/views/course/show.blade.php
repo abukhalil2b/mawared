@@ -8,7 +8,12 @@
 	<link href="{{ asset('css/main.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/style.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/font-awesome.min.css')}}" rel="stylesheet">
-	<title>course</title>
+	<link href="{{ asset('css/course-show.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/colors.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/teacher-show.css') }}" rel="stylesheet">
+	<!-- Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<title></title>
 </head>
 <body>
 	@if(session('msg'))
@@ -16,41 +21,111 @@
             <b>{{session('msg')}}</b>
         </center>
     @endif
+	<div class="course-show-title">{{$course->title}}</div>
 	<div class="container">
-		<div class="text-head mt-5">{{$course->title}}</div>
-		<div class="img-container">
-			@if($course->imgurl==NULL)
-			<img class="img1 mt-5" src="{{ asset('img/logo1.png') }}" alt="Card image cap">
-			@else
-			<img class="img1 mt-5" src="{{$course->imgurl}}" alt="Card image cap">
-			@endif
+		<div class="row">
+			<div class="col-md-12 mt-3">
+				<h5 class="">{{$course->shortDescription}}</h5>
+				<h6 class="mt-1">{{$course->longDescription}}</h6>
+			</div>
 		</div>
-		<h5 class="mt-5">{{$course->shortDescription}}</h5>
-		<h6 class="mt-1">{{$course->longDescription}}</h6>
-		<span class="badge badge-warning">{{$course->isPaid? $course->price :'مجانية'}}</span>
-		<div><span class="text-bold">تاريخ البدء</span> {{$course->startAt}}</div>
-		<div><span class="text-bold">تنتهي</span>  {{$course->endAt}}</div>
-		<div><span class="text-bold">الوقت</span>  {{$course->startTime}}</div>
-		<div><span class="text-bold">المدة</span>  {{$course->duration}}</div>
-		<div><span class="text-bold">يبدأ التسجيل</span>  {{$course->registerStartAt}}</div>
-		<div><span class="text-bold">ينتهي التسجيل</span> {{$course->registerEndAt}}</div>
-		<div><span class="text-bold">الأيام</span>  {{$course->weekDays}}</div>
-		<div><span class="text-bold">العدد المطلوب</span>  {{$course->requireNumber}}</div>
-		<div><span class="text-bold">وسيلة إلقاء الدورة</span>  {{$course->deliveryMeans}}</div>
-		<div><span class="text-bold">المحاضر</span>  {{$course->teacher->user->name}} </div>
-		@guest
-	        <a href="{{route('login')}}" class="btn btn1">سجل الدخول</a>
-			<a href="{{route('register')}}" class="btn btn1">سجل حساب جديد</a>
-        @else
-        	@if(auth::user()->userType=='admin')
-        	@else
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 mt-5 col-sm-12">
+				<div class="course-show-learn">{{__('pages.you will learn from this course')}}</div>
+				@foreach($details as $detail)
+				@if($detail->ishead)
+					<div class="display-flex mt-3">
+						<span class="material-icons">{{$detail->icon}}</span>
+						<span class="text-bold text-lg">{{$detail->title}}</span>
+					</div>
+				@else
+				<div class="details"> - {{$detail->title}}</div>
+				@endif
+				@endforeach
+			</div>
+			<div class="col-md-6 mt-5 col-sm-12">
+				<div class="display-flex">
+					<span class="material-icons">calendar_today</span>
+					<span class="text-bold">تاريخ البدء</span>
+					{{$course->startAt}}
+				</div>
+				<div class="display-flex">
+					<span class="material-icons">date_range</span>
+					<span class="text-bold">تنتهي</span>
+					 {{$course->endAt}}
+				</div>
+				<div class="display-flex">
+					<span class="material-icons">av_timer</span>
+					<span class="text-bold">الوقت</span>
+					 {{$course->startTime}}
+				</div>
+				<div class="display-flex">
+					<span class="material-icons">hourglass_full</span>
+					<span class="text-bold">المدة</span>
+					 {{$course->duration}}
+				</div>
+				<div class="display-flex">
+					<span class="material-icons">pending_actions</span>
+					<span class="text-bold">يبدأ التسجيل</span>
+					 {{$course->registerStartAt}}
+				</div>
+				<div class="display-flex">
+					<span class="material-icons">pan_tool</span>
+					<span class="text-bold">ينتهي التسجيل</span>
+					{{$course->registerEndAt}}
+				</div>
+				<div class="display-flex">
+					<span class="material-icons">today</span>
+					<span class="text-bold">الأيام</span>
+					@foreach(explode(' ',$course->weekDays) as $day)
+					[ {{__('pages.'.$day)}} ]
+					@endforeach
+				</div>
+				<div class="display-flex">
+					<span class="material-icons">person_search</span>
+					<span class="text-bold">العدد المطلوب</span>
+					 {{$course->requireNumber}}
+				</div>
+				<div class="display-flex">
+					<span class="material-icons">desktop_mac</span>
+					<span class="text-bold">وسيلة إلقاء الدورة</span>
+					 {{$course->deliveryMeans}}
+				</div>
+				<span class="badge badge-warning">{{$course->isPaid? 'السعر '.$course->price :'مجانية'}}</span>
+			</div>
+			<div class="col mt-3">
+				<span class="display-flex flex-center">
+					<a href="{{route('teacher.show',['id'=>$teacher->id])}}">
+						@if($teacher->avatar)
+						<img class="course-show-avatar" src="{{$teacher->avatar}}" alt="avatar">
+						@else
+						<img class="course-show-avatar" src="{{asset('img/avatar/avatar.png')}}" alt="avatar">
+						@endif
+						<span class="course-show-username">
+							{{$teacher->user->name}}
+						</span>
+					</a>
+				</span>
+			</div>
+		</div>
+    </div>
+    <div class="container">
+    	<div class="divider"></div>
+    	<div class="btn-container">
+    	@guest
+	        <a href="{{route('login')}}" class="btn btn1 color1">سجل الدخول</a>
+			<a href="{{route('register')}}" class="btn btn1 color1">سجل حساب جديد</a>
+	    @else
+	    	@if(auth::user()->userType=='admin')
+	    	@else
 		        @if(!$isSubscribed)
-		            <a class="btn btn1"
+		            <a class="btn btn1 color1"
 		               onclick="event.preventDefault();
 		                             document.getElementById('subscribe-form').submit();">
 		                التسجيل في الدورة
 		            </a>
-
 		            <form id="subscribe-form" action="{{ route('course.subscribe') }}" method="POST" style="display: none;">
 		                @csrf
 		                <input type="hidden" name="course_id" value="{{$course->id}}">
@@ -62,8 +137,9 @@
 		       		@endif
 		        @endif
 	        @endif
-        @endguest
-	</div>
+	    @endguest
+	    </div>
+    </div>
 </body>
 </html>
 

@@ -24,7 +24,7 @@ class CourseSeeder extends Seeder {
 				'registerEndAt' => '2020-11-08',
 				'weekDays' => 'Sun Wed',
 				'requireNumber' => '20',
-				'status' => 'future',
+				'status' => 'coming',
 				'isPaid' => '1',
 				'price' => '5.5',
 				'language' => 'ar',

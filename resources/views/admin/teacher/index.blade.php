@@ -11,7 +11,14 @@
                 </tr>
                 @foreach($teachers as $teacher)
                 <tr>
-                    <td>{{$teacher->user->name}}</td>
+                    <td class="display-flex">
+                        <img class="avatar" src="{{asset('img/avatar/avatar.png')}}" alt="avatar">
+                        <div class="namecontainer">
+                            <span class="name">{{$teacher->user->name}}</span>
+                            <span class="nametitle">{{$teacher->title}}</span>
+                        </div>
+
+                    </td>
                     <td>
                         <a class="btn" href="">تعديل</a>
                         <a class="btn" href="">حذف</a>

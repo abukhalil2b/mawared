@@ -58,6 +58,7 @@ class HomeController extends Controller {
 					$query->where('student_course.student_id', $student->id)
 						->where('status', 'past');;
 				})->get();
+
 			}
 			// return $myNewCourses;
 			return view('student.dashboard', compact('student', 'myComingCourses', 'myNowCourses', 'myPastCourses', 'user', 'totalMarks'));
