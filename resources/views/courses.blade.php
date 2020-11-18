@@ -12,9 +12,13 @@
             @foreach($comingcourses as $course)
                 <div class="col-lg-4 col-md-6 mt-3">
                     <div class="course-card">
-                      <img class="course-card-img-top" src="{{ asset('img/cover1.png') }}" alt="img">
-                      <span class="course-card-title">{{$course->title}}</span>
-                      <div class="course-card-body">
+                        @if($course->imgurl==NULL)
+                        <img class="course-card-img-top" src="{{ asset('img/cover1.png') }}" alt="img">
+                        @else
+                        <img class="course-card-img-top" src="{{$course->imgurl}}" alt="img">
+                        @endif
+                        <span class="course-card-title">{{$course->title}}</span>
+                        <div class="course-card-body">
                             @if($course->isPaid==1)
                             السعر
                             <span class="badge badge-warning">{{$course->price}}</span>
@@ -23,7 +27,7 @@
                             @endif
                             <div class="course-card-txt color1">تاريخ البدء {{$course->startAt}}</div>
                             <a href="{{route('course.show',['id'=>$course->id])}}" class="btn btn1 color1">تفاصيل</a>
-                      </div>
+                        </div>
                     </div>
                 </div>
             @endforeach
@@ -41,26 +45,24 @@
         <div class="container">
             <div class="row">
             @foreach($nowcourses as $course)
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4 col-md-6 mt-3">
                     <div class="course-card">
-                    @if($course->imgurl==NULL)
-                    <img class="course-card-img-top" src="{{ asset('img/cover1.png') }}" alt="img">
-                    @else
-                    <img class="course-card-img-top" src="{{$course->imgurl}}" alt="img">
-                    @endif
-                      <div class="course-card-body">
-                        <p class="course-card-text">
-                            <h4>{{$course->title}}</h4>
-                            السعر
+                        @if($course->imgurl==NULL)
+                        <img class="course-card-img-top" src="{{ asset('img/cover1.png') }}" alt="img">
+                        @else
+                        <img class="course-card-img-top" src="{{$course->imgurl}}" alt="img">
+                        @endif
+                        <span class="course-card-title">{{$course->title}}</span>
+                        <div class="course-card-body">
                             @if($course->isPaid==1)
+                            السعر
                             <span class="badge badge-warning">{{$course->price}}</span>
                             @else
                             <span class="badge badge-success">مجانية</span>
                             @endif
-                            <div>تاريخ البدء {{$course->startAt}}</div>
-                            <a href="{{route('course.show',['id'=>$course->id])}}" class="btn btn1">تفاصيل</a>
-                        </p>
-                      </div>
+                            <div class="course-card-txt color1">تاريخ البدء {{$course->startAt}}</div>
+                            <a href="{{route('course.show',['id'=>$course->id])}}" class="btn btn1 color1">تفاصيل</a>
+                        </div>
                     </div>
                 </div>
             @endforeach
@@ -78,26 +80,24 @@
         <div class="container">
             <div class="row">
             @foreach($pastcourses as $course)
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4 col-md-6 mt-3">
                     <div class="course-card">
-                    @if($course->imgurl==NULL)
-                    <img class="course-card-img-top" src="{{ asset('img/cover1.png') }}" alt="img">
-                    @else
-                    <img class="course-card-img-top" src="{{$course->imgurl}}" alt="img">
-                    @endif
-                      <div class="course-card-body">
-                        <p class="course-card-text">
-                            <span class="course-card-title">{{$course->title}}</span>
-                            السعر
+                        @if($course->imgurl==NULL)
+                        <img class="course-card-img-top" src="{{ asset('img/cover1.png') }}" alt="img">
+                        @else
+                        <img class="course-card-img-top" src="{{$course->imgurl}}" alt="img">
+                        @endif
+                        <span class="course-card-title">{{$course->title}}</span>
+                        <div class="course-card-body">
                             @if($course->isPaid==1)
+                            السعر
                             <span class="badge badge-warning">{{$course->price}}</span>
                             @else
                             <span class="badge badge-success">مجانية</span>
                             @endif
-                            <div>تاريخ البدء {{$course->startAt}}</div>
-                            <a href="{{route('course.show',['id'=>$course->id])}}" class="btn btn1">تفاصيل</a>
-                        </p>
-                      </div>
+                            <div class="course-card-txt color1">تاريخ البدء {{$course->startAt}}</div>
+                            <a href="{{route('course.show',['id'=>$course->id])}}" class="btn btn1 color1">تفاصيل</a>
+                        </div>
                     </div>
                 </div>
             @endforeach
