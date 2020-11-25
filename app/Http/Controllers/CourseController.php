@@ -48,7 +48,8 @@ class CourseController extends Controller {
 		//check course is not active
 		$course = Course::where(['id' => $request->course_id, 'active' => 1, 'status' => 'coming'])->first();
 		if ($course) {
-			$course->students()->syncWithoutDetaching(Auth::user()->student);
+			$id = Auth::user()->student->id;
+			$course->students()->syncWithoutDetaching([$id => ['free' => $course->free]]);
 			return redirect()->route('home');
 		}
 		return redirect()->back()->with(['msg' => 'لايمكن الإشتراك']);

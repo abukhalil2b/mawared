@@ -93,7 +93,7 @@
 					<span class="text-bold">وسيلة إلقاء الدورة</span>
 					 {{$course->deliveryMeans}}
 				</div>
-				<span class="badge badge-warning">{{$course->isPaid? 'السعر '.$course->price :'مجانية'}}</span>
+				<span class="badge badge-warning">{{$course->free==0? 'السعر '.$course->price :'مجانية'}}</span>
 			</div>
 			<div class="col mt-3">
 				<span class="display-flex flex-center">

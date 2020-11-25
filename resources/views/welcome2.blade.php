@@ -37,7 +37,15 @@
 				<img class="middle" src="{{asset('img/welcome2/img/hadith.png')}}" alt="middle">
 			</div>
 			<div class="two">
-				<img class="bar" src="{{asset('img/welcome2/img/bar.png')}}" alt="bar">
+				<div id="bar" class="bar-nav">
+					<img  src="{{asset('img/welcome2/img/bar.png')}}" alt="bar">
+					<ul class="nav">
+					    <li>home</li>
+					    <li>home</li>
+					    <li>home</li>
+					    <li>home</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 
@@ -95,6 +103,6 @@
 	    <img class="slide-img2" src="{{asset('img/welcome2/img/b2.jpg')}}" alt="Second slide">
 	    <img class="slide-img3" src="{{asset('img/welcome2/img/b3.jpg')}}" alt="Third slide">
 	</div>
-
+<script src="{{asset('js/welcome2/script.js')}}"></script>
 </body>
 </html>

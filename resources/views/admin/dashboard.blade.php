@@ -43,6 +43,16 @@
         	</div>
         </div>
 
+        <div class="col-md-3 col-sm-6">
+            <div class="card mt-3">
+                <div class="card-body">
+                    <a class="btn-block btn btn-secondary" href="{{route('admin.statement.create')}}">
+                    الحسابات
+                    </a>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 @endsection

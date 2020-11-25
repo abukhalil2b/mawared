@@ -19,7 +19,7 @@
                         @endif
                         <span class="course-card-title">{{$course->title}}</span>
                         <div class="course-card-body">
-                            @if($course->isPaid==1)
+                            @if($course->free==0)
                             السعر
                             <span class="badge badge-warning">{{$course->price}}</span>
                             @else
@@ -54,7 +54,7 @@
                         @endif
                         <span class="course-card-title">{{$course->title}}</span>
                         <div class="course-card-body">
-                            @if($course->isPaid==1)
+                            @if($course->free==0)
                             السعر
                             <span class="badge badge-warning">{{$course->price}}</span>
                             @else
@@ -89,7 +89,7 @@
                         @endif
                         <span class="course-card-title">{{$course->title}}</span>
                         <div class="course-card-body">
-                            @if($course->isPaid==1)
+                            @if($course->free==0)
                             السعر
                             <span class="badge badge-warning">{{$course->price}}</span>
                             @else

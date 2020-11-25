@@ -26,7 +26,7 @@ class CreateCoursesTable extends Migration {
 			$table->string('weekDays')->nullable();
 			$table->string('requireNumber')->nullable();
 			$table->string('status')->nullable();
-			$table->boolean('isPaid')->default(1);
+			$table->boolean('free')->default(0);
 			$table->double('price')->nullable();
 			$table->string('language')->nullable();
 			$table->string('level')->nullable();

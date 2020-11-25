@@ -122,14 +122,47 @@ h5{
 	width: 500px;
 
 }
-.bodysection .two .bar{
+/*-		bar	--*/
+.bodysection .bar-nav img{
+	width: 100%;
+}
+.bodysection .two .bar-nav{
+	cursor: pointer;
 	position: fixed;
 	left: -150px;
 	width: 200px;
+	height: 500px;
+	transition: all 450ms ease-in-out;
+}
+.open{
+	left: 0 !important;
 }
 
-
-
+.bodysection .two{
+	position: relative;
+}
+.bodysection .nav{
+	top: 0;
+	left: 0;
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	margin-top: 45%;
+    margin-left: 16%;
+}
+.bodysection .nav li{
+	margin:10px 5px;
+	background: url('../../img/bg.jpg');
+	border-radius: 5px;
+	border: 1px solid #000;
+    cursor: pointer;
+    width: 120px;
+    height: 40px;
+    color: #fff;
+    text-align: center;
+    line-height: 2;
+    font-weight: bold;
+}
 /*-		body section2	--*/
 .bodysection2{
 	position: fixed;

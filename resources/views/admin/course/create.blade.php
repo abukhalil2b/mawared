@@ -99,7 +99,7 @@
 						<tr>
                     		<td>هل مدفوعة</td>
                     		<td>
-								<select name="isPaid" class="form-control">
+								<select name="free" class="form-control">
 									<option value="1">نعم</option>
 									<option value="0">لا</option>
 								</select>

@@ -19,7 +19,7 @@ class Course extends Model {
 		'weekDays',
 		'requireNumber',
 		'status',
-		'isPaid',
+		'free',
 		'price',
 		'language',
 		'level',
@@ -46,7 +46,8 @@ class Course extends Model {
 	}
 
 	public function subscribers() {
-		return $this->belongsToMany(Student::class, 'student_course', 'course_id', 'student_id')->withPivot('ispaid');
+		return $this->belongsToMany(Student::class, 'student_course', 'course_id', 'student_id')
+			->withPivot(['ispaid', 'free', 'fee']);
 	}
 
 }

@@ -52,6 +52,13 @@ Route::prefix('teacher')->middleware('hasStudentAccount')->group(function () {
 	Route::get('{id}/show', "TeacherController@show")->name('teacher.show');
 });
 
+/** statement */
+Route::prefix('admin/statement')->group(function () {
+	Route::get('{date}/details', "StatementController@details")->name('admin.statement.details');
+	Route::get('create', "StatementController@create")->name('admin.statement.create');
+	Route::post('store', "StatementController@store")->name('admin.statement.store');
+});
+
 Route::post('register/student', "StudentController@registerStudent")->name('register.student');
 Route::post('course/subscribe', "CourseController@courseSubscribe")->name('course.subscribe');
 

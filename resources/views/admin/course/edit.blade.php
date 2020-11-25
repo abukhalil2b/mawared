@@ -86,9 +86,9 @@
 						<tr>
                     		<td>هل مدفوعة</td>
                     		<td>
-								<select name="isPaid" class="form-control">
-									<option @if($course->isPaid=='1')selected @endif value="1">نعم</option>
-									<option @if($course->isPaid=='0')selected @endif value="0">لا</option>
+								<select name="free" class="form-control">
+									<option @if($course->free=='1')selected @endif value="1">نعم</option>
+									<option @if($course->free=='0')selected @endif value="0">لا</option>
 								</select>
 							</td>
                     	</tr>

@@ -106,7 +106,7 @@
                         <p class="card-text">
                             <h4>{{$course->title}}</h4>
                             السعر
-                            @if($course->isPaid==1)
+                            @if($course->free==0)
                             <span class="badge badge-warning">{{$course->price}}</span>
                             @else
                             <span class="badge badge-success">مجانية</span>
@@ -139,7 +139,7 @@
                         <p class="card-text">
                             <h4>{{$course->title}}</h4>
                             السعر
-                            @if($course->isPaid==1)
+                            @if($course->free==0)
                             <span class="badge badge-warning">{{$course->price}}</span>
                             @else
                             <span class="badge badge-success">مجانية</span>
@@ -172,7 +172,7 @@
                         <p class="card-text">
                             <h4>{{$course->title}}</h4>
                             السعر
-                            @if($course->isPaid==1)
+                            @if($course->free==0)
                             <span class="badge badge-warning">{{$course->price}}</span>
                             @else
                             <span class="badge badge-success">مجانية</span>
