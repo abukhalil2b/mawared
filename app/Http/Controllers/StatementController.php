@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 class StatementController extends Controller {
 	public function store(Request $request) {
+		$this->validate($request, [
+			'amount' => 'required',
+		]);
 
 		$date = $request->date;
 		$state = $request->state;
